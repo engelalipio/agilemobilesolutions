@@ -21,6 +21,12 @@ namespace AgileMobileSolutions.Controllers
 
             return View();
         }
+        public ActionResult Services()
+        {
+            ViewBag.Message = "Your Services page.";
+
+            return View();
+        }
 
         public ActionResult Contact()
         {
