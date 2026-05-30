@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   deploy:
     runs-on: windows-latest
@@ -23,7 +26,14 @@ jobs:
         run: nuget restore AgileMobileSolutions.sln
 
       - name: Build with MSBuild
-        run: msbuild AgileMobileSolutions.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=Properties/PublishProfiles/AgileMobileSolutions.pubxml /p:PackageAsSingleFile=true /p:OutDir=publish_output
+        run: msbuild AgileMobileSolutions.sln /p:Configuration=Release /p:OutputPath=publish_output\bin
+
+      - name: Copy web content
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path publish_output | Out-Null
+          robocopy . publish_output /E /XD .git .github packages obj bin publish_output node_modules ClientApp
+          if ($LASTEXITCODE -le 7) { exit 0 } else { exit $LASTEXITCODE }
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
