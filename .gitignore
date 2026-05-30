@@ -10,7 +10,6 @@
 
 # Node
 ClientApp/node_modules/
-ClientApp/package-lock.json
 
 # Build artifacts (keep assets — needed for deployment)
 # Scripts/dist/assets/
