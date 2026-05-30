@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agile Mobile Solutions</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: "Segoe UI", system-ui, sans-serif; background: #f0f4f8; }
+
+        /* ---- Header ---- */
+        .site-header {
+            background: #0f2b5b;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .site-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .site-logo img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #1d4ed8;
+        }
+        .site-logo-text { color: #fff; font-size: 15px; font-weight: 600; }
+        .site-logo-sub  { color: #93c5fd; font-size: 11px; }
+
+        .site-nav { display: flex; gap: 4px; align-items: center; }
+        .site-nav a {
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #93c5fd;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+        }
+        .site-nav a:hover  { background: rgba(255,255,255,0.1); color: #fff; }
+        .site-nav a.active { background: #1d4ed8; color: #fff; }
+
+        /* ---- Pages ---- */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* ---- Footer ---- */
+        .site-footer {
+            background: #0f2b5b;
+            padding: 24px 32px;
+            margin-top: 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .site-footer p    { color: #93c5fd; font-size: 13px; }
+        .footer-links     { display: flex; gap: 24px; }
+        .footer-links a   { color: #93c5fd; font-size: 13px; text-decoration: none; }
+        .footer-links a:hover { color: #fff; }
+
+        /* ---- MCSD badge in nav ---- */
+        .nav-badge img { height: 36px; vertical-align: middle; margin-left: 8px; }
+
+        @media (max-width: 600px) {
+            .site-header { padding: 0 16px; height: auto; padding-top: 12px; padding-bottom: 12px; flex-wrap: wrap; gap: 10px; }
+            .site-logo-sub { display: none; }
+            .site-footer { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a class="site-logo" onclick="show('home')">
+            <img src="/Images/AMS/AMS.png" alt="AMS logo" onerror="this.style.display='none'" />
+            <div>
+                <div class="site-logo-text">Agile Mobile Solutions</div>
+                <div class="site-logo-sub">Enterprise mobile development</div>
+            </div>
+        </a>
+        <nav class="site-nav">
+            <a id="nav-home"     class="active" onclick="show('home')">Home</a>
+            <a id="nav-services"             onclick="show('services')">Services</a>
+            <a id="nav-about"                onclick="show('about')">About</a>
+            <a id="nav-contact"              onclick="show('contact')">Contact</a>
+            <span class="nav-badge">
+                <img src="/Images/AMS/MCSD.png" alt="MCSD" onerror="this.style.display='none'" />
+            </span>
+        </nav>
+    </header>
+
+    <main>
+        <div id="home"     class="page active"><div id="react-root"></div></div>
+        <div id="about"    class="page"><div id="react-about"></div></div>
+        <div id="services" class="page"><div id="react-services"></div></div>
+        <div id="contact"  class="page"><div id="react-contact"></div></div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Agile Mobile Solutions L.L.C. All rights reserved.</p>
+        <div class="footer-links">
+            <a onclick="show('services')">Services</a>
+            <a onclick="show('about')">About</a>
+            <a onclick="show('contact')">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        function show(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.site-nav a').forEach(a => a.classList.remove('active'));
+            const navEl = document.getElementById('nav-' + id);
+            if (navEl) navEl.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+    <script src="/bundle.js"></script>
+</body>
+</html>

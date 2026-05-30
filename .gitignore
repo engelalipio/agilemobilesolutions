@@ -7,3 +7,14 @@
 /.vs/agilemobilesolutions/FileContentIndex/7292df2d-0446-4490-a3a1-77d55febdae9.vsidx
 /.vs/agilemobilesolutions/FileContentIndex/c902d75f-82b3-4a73-8200-66cab5a34787.vsidx
 /.vs/agilemobilesolutions/FileContentIndex/f6e74ed9-cd5a-4c29-aad5-28840bc00c17.vsidx
+
+# Node
+ClientApp/node_modules/
+ClientApp/package-lock.json
+
+# Build artifacts
+Scripts/dist/assets/
+
+# OS
+.DS_Store
+**/.DS_Store

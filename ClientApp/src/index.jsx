@@ -1,6 +1,7 @@
-﻿import React from 'react';
-import { createRoot } from 'react-dom/client'; 
-import './about.jsx'; 
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import './styles.css';
+import './about.jsx';
 import './contact.jsx';
 import './services.jsx';
 
@@ -9,32 +10,78 @@ if (container) {
     createRoot(container).render(<Index />);
 }
 
+const services = [
+    { icon: '📱', cls: 'icon-blue',   title: 'App Development',      desc: 'iOS, Android, and cross-platform mobile apps built with modern SDKs and frameworks.' },
+    { icon: '☁️', cls: 'icon-teal',   title: 'Cloud Infrastructure', desc: 'Azure-hosted, scalable backend services designed to grow with your business.' },
+    { icon: '📋', cls: 'icon-purple', title: 'Project Management',   desc: 'Agile delivery with sprints, backlogs, and full lifecycle oversight.' },
+    { icon: '🎨', cls: 'icon-amber',  title: 'UX & Graphic Design',  desc: 'Interfaces users want to use — designed for both smartphones and tablets.' },
+    { icon: '✅', cls: 'icon-coral',  title: 'QA Testing',           desc: 'Multi-device, multi-platform testing across simulators and real hardware.' },
+    { icon: '🚀', cls: 'icon-green',  title: 'Deployment Support',   desc: 'App store launch, knowledge transfer, monitoring, and ongoing growth planning.' },
+];
+
+const creds = [
+    { color: '#1d4ed8', title: 'MCSD · MCSE · MCT',           sub: 'Microsoft Certified since 1998 · ID 1017311' },
+    { color: '#065f46', title: 'iOS Developer Program',         sub: 'Member since 2011 · ID 174054634' },
+    { color: '#5b21b6', title: 'BlackBerry Enterprise Council', sub: "Selected by RIM's Chief Mobility Officer" },
+];
+
 export default function Index() {
     return (
-        <div>
-            <h3>Why Agile Mobile Solutions Development Services (React)</h3>
-            <ol className="round">
-                <li className="one">
-                    <h5>Agile Methodology</h5>
-                    We leverage set of tools and associated services that enable us to design, build, deploy and manage mobile applications in a very rapid fashion. <br />
-                    In today’s constantly changing world, organizations require mobility solutions that can quickly respond to the rapidly evolving needs of their user base.<br /> 
-                    <a href="https://en.wikipedia.org/wiki/Agile_software_develoment" target="_blank" rel="noopener noreferrer">More Details…</a>
-                </li>
-                <li className="two">
-                    <h5>Apple's iOS Developer Program</h5>
-                    iOS is without a doubt the world’s most advanced mobile operating system, continually redefining what people can do with a mobile device.<br />
-                    Solutions will leverage the iOS SDK (Software Development Kit) and XCode IDE (Integrated Design Editor) to be able to provide the best experience to your customers.<br />
-                    Additionally, the iOS platform provides the ability to seamlessly integrate with multiple back-end applications and data sources using standards-based API’s. This reduces the complexity of interfacing your mobile applications with internal, external third-party or public applications and data sources when required.
-                    <a href="https://developer.apple.com/" target="_blank" rel="noopener noreferrer">More Details…</a>
-                </li>
-                <li className="three">
-                    <h5>Cloud Infrastructure and Services</h5>
-                    We are member of Windows Azure cloud Infrastructure and Services for both the middle and back end tiers of your solution if required.<br />
-                    This is Microsoft's Cloud offering that provides highly-available, infinitely scalable applications and data centers. <br />
-                    This allows us to focus on the actual application and not the plumbing. It is built on modern cloud architecture which respond faster and never go down also providing, monitoring, alerting and auto-scaling.
-                    <a href="http://www.azure.microsoft.com/‎" target="_blank" rel="noopener noreferrer">More Details…</a>
-                </li>
-            </ol>
+        <div className="ams-page">
+            <div className="ams-hero">
+                <span className="ams-hero-tag">Microsoft Certified &nbsp;&middot;&nbsp; iOS Developer &nbsp;&middot;&nbsp; Azure Partner</span>
+                <h1>Mobile Solutions,<br />Built to Scale</h1>
+                <p>
+                    We design, build, and deploy enterprise-grade mobile applications using Agile
+                    methodology &mdash; on time and on budget.
+                </p>
+                <div className="ams-hero-btns">
+                    <button className="btn-primary" onClick={() => window.show && window.show('services')}>View Services</button>
+                    <button className="btn-outline" onClick={() => window.show && window.show('contact')}>Get in Touch</button>
+                </div>
+                <div className="ams-hero-stats">
+                    <div className="ams-stat">
+                        <div className="ams-stat-num">25+</div>
+                        <div className="ams-stat-label">Years experience</div>
+                    </div>
+                    <div className="ams-stat">
+                        <div className="ams-stat-num">iOS</div>
+                        <div className="ams-stat-label">Developer since 2011</div>
+                    </div>
+                    <div className="ams-stat">
+                        <div className="ams-stat-num">MCSD</div>
+                        <div className="ams-stat-label">Certified since 1998</div>
+                    </div>
+                    <div className="ams-stat">
+                        <div className="ams-stat-num">Azure</div>
+                        <div className="ams-stat-label">Cloud partner</div>
+                    </div>
+                </div>
+            </div>
+
+            <p className="ams-section-label">What we do</p>
+            <div className="ams-cards">
+                {services.map((s) => (
+                    <div className="ams-card" key={s.title}>
+                        <div className={`ams-card-icon ${s.cls}`}>{s.icon}</div>
+                        <h3>{s.title}</h3>
+                        <p>{s.desc}</p>
+                    </div>
+                ))}
+            </div>
+
+            <p className="ams-section-label">Credentials</p>
+            <div className="ams-creds">
+                {creds.map((c) => (
+                    <div className="ams-cred" key={c.title}>
+                        <div className="ams-cred-dot" style={{ background: c.color }} />
+                        <div>
+                            <h4>{c.title}</h4>
+                            <p>{c.sub}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
