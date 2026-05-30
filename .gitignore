@@ -12,8 +12,8 @@
 ClientApp/node_modules/
 ClientApp/package-lock.json
 
-# Build artifacts
-Scripts/dist/assets/
+# Build artifacts (keep assets — needed for deployment)
+# Scripts/dist/assets/
 
 # OS
 .DS_Store
