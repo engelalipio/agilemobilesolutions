@@ -21,12 +21,12 @@ const skills = [
     {
         title: 'Programming Languages',
         color: '#065f46',
-        tags: ['C#', 'Java', 'Objective-C', 'C++', 'Visual Basic.NET', 'FlexBuilder', 'P-SQL', 'T-SQL', 'PHP'],
+        tags: ['C#', 'Python', 'Java', 'Objective-C', 'C++', 'Visual Basic.NET', 'FlexBuilder', 'P-SQL', 'T-SQL', 'PHP'],
     },
     {
         title: 'Java Frameworks & IDEs',
         color: '#5b21b6',
-        tags: ['J2EE', 'MVC', 'Spring', 'Struts', 'Hibernate', 'JSP', 'JSF', 'Facelets', 'Android'],
+        tags: ['J2EE', 'MVC', 'Spring', 'Struts', 'Hibernate', 'JSP', 'JSF', 'Facelets', 'Android', 'AI Software Development', 'MCP Server', 'LLMs', 'Claude', 'ChatGPT', 'Gemini', 'Devin AI'],
     },
     {
         title: '.NET Frameworks',
