@@ -4,43 +4,101 @@
         <meta charset="utf-8" />
         <title>@ViewBag.Title</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         @Scripts.Render("~/bundles/modernizr")
+        <style>
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+            body { font-family: "Segoe UI", system-ui, sans-serif; background: #f0f4f8; }
+
+            .site-header {
+                background: #0f2b5b;
+                padding: 0 32px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                height: 68px;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+            .site-logo {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                text-decoration: none;
+            }
+            .site-logo img {
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            .site-logo-text { color: #fff; font-size: 15px; font-weight: 600; }
+            .site-logo-sub  { color: #93c5fd; font-size: 11px; }
+
+            .site-nav { display: flex; gap: 4px; align-items: center; }
+            .site-nav a {
+                padding: 7px 16px;
+                border-radius: 20px;
+                font-size: 13px;
+                font-weight: 500;
+                color: #93c5fd;
+                text-decoration: none;
+                transition: background 0.15s, color 0.15s;
+            }
+            .site-nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+            #body { background: #f0f4f8; }
+            #body section.content-wrapper { max-width: 100%; padding: 0; background: none; }
+
+            .site-footer {
+                background: #0f2b5b;
+                padding: 24px 32px;
+                margin-top: 48px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+            .site-footer p  { color: #93c5fd; font-size: 13px; }
+            .footer-links   { display: flex; gap: 24px; }
+            .footer-links a { color: #93c5fd; font-size: 13px; text-decoration: none; }
+            .footer-links a:hover { color: #fff; }
+
+            #login { display: none; }
+        </style>
     </head>
     <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Services", "Services", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                            <img src="~/Images/AMS/MCSD.png" width="120" height="70" / >
-                        </ul>
-                    </nav>
+        <header class="site-header">
+            <a class="site-logo" href="@Url.Action("Index", "Home")">
+                <img src="~/Images/AMS/AMS.png" alt="AMS logo" />
+                <div>
+                    <div class="site-logo-text">Agile Mobile Solutions</div>
+                    <div class="site-logo-sub">Enterprise mobile development</div>
                 </div>
-                <div >
-                    <p > <img src="~/Images/AMS/AMS.png" width="200" height="200"/></p>
-                </div>
-            </div>
+            </a>
+            <nav class="site-nav">
+                @Html.ActionLink("Home",     "Index",    "Home")
+                @Html.ActionLink("Services", "Services", "Home")
+                @Html.ActionLink("About",    "About",    "Home")
+                @Html.ActionLink("Contact",  "Contact",  "Home")
+            </nav>
         </header>
+
         <div id="body">
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
         </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Agile Mobile Solutions L.L.C.</p>
-                </div>
+
+        <footer class="site-footer">
+            <p>&copy; @DateTime.Now.Year Agile Mobile Solutions L.L.C. All rights reserved.</p>
+            <div class="footer-links">
+                @Html.ActionLink("Services", "Services", "Home")
+                @Html.ActionLink("About",    "About",    "Home")
+                @Html.ActionLink("Contact",  "Contact",  "Home")
             </div>
         </footer>
 
